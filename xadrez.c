@@ -1,54 +1,56 @@
 #include <stdio.h>
 
 int main(){
-//declara variaveis de peça, direção e quanitdade de quadros para mopvimento
-    char direcao[20];
-    int qtdmov, peca;
+    // variavel para guarda a quantidade de movimento para cada uma das peças
+    int qtdquadradosTorre, qtdquadradosRainha, qtdquadradosBispo;
+    //direção pra onde a peça se move
+    char *direcaoTorre, *direcaoRainha, *direcaoBispo;
 
-    char prog;
-        int a=1;
-    //para finalizar programa
-    do{
-        //formulário simples, interativos
-        printf("Qual a peça que sera movida?\n1 - Torre\n2 - Bispo\n3 - Rainha \n");
-        scanf("%d", &peca);
-        printf("Qual a quantidade quadros?\n");
-        scanf("%d", &qtdmov);
-        printf("Qual a direção quadros(Cima, baixo, direita, esquerda)?\n");
-        printf("*Diagonal(Frente e trás) pra o bispo*");
-        scanf("%s", &direcao);
+    //movimenta a Torre 
+   printf("Torre \n");
+    qtdquadradosTorre = 3;
+    direcaoTorre = "direita";
+    for(int t = 0;t<=qtdquadradosTorre; t++){
+    printf("%s ", direcaoTorre);
+    }
+   printf("\n");
+   printf("\n");
+    //movimenta a Rainha 
+   printf("Rainha \n");
+    int r = 0;
+    qtdquadradosRainha = 3;
+    direcaoRainha = "esquerda";
+    while(r <= qtdquadradosRainha) {
+        printf("%s ", direcaoRainha);
+        r++;
+    }
+   printf("\n");
+   printf("\n");
+    //movimenta a Bispo 
+   printf("Bispo (diagonal 'esqueda,cima')\n");
+   int b = 0;
+   qtdquadradosBispo = 4;
+    direcaoBispo = "esquerda, cima";
+   do{
+        printf("%s ", direcaoBispo);
+        b++;
+   } while(b<=qtdquadradosBispo);
+   printf("\n");
+   printf("\n");
+    //movimenta a Cavalo 
+   printf("Cavalo (duas direçoes em L)\n");
+   char *direcaoCavalo1, *direcaoCavalo2;
+   int qtdquadradosCavlo1,qtdquadradosCavlo2;
+   qtdquadradosCavlo1 = 1;
+   qtdquadradosCavlo2 = 2;
+   direcaoCavalo1 = "esquerda";
+   direcaoCavalo2 = "baixo";
+   for(int c = qtdquadradosCavlo1; (c>0); c--){
+        for(int v=1; v<=qtdquadradosCavlo2; v++){
+        printf("\n%s ", direcaoCavalo2);
+         }
+        printf("%s ", direcaoCavalo1);
+   }
+return 0;
+    }
 
-        //deixa mais dinamico a escolha das peças
-        switch (peca)
-        {
-        case 1:
-        //"Move a peça"
-            for(int i = 1;i<=qtdmov;i++){
-                printf("Torre se moveu 1 quadro para %s\n", direcao);
-            }
-            break;
-        case 2: 
-        //"Move a peça"
-        for(int i = 1;i<=qtdmov;i++){
-                printf("Bispo se moveu 1 quadro para Diagonal da %s\n", direcao);
-            }
-            break;
-        case 3:
-        //"Move a peça"
-            while( a <= qtdmov){
-                printf("Rainha se moveu 1 quadro para %s\n", direcao);
-                a++;
-            }
-            break;
-        //peça fora das 3
-        default:
-            printf("opção de peça inválida inváldia!!");
-            break;
-        }
-    //pergunta se quer jogar mais uma rodada
-        printf("Quer continuar o jogo, apete 1, ( ou aperte 0 para encerrar)?");
-        scanf("%d", &prog);
-    } while (prog != 0);
-
-    return 0;
-}
