@@ -1,56 +1,64 @@
 #include <stdio.h>
 
-int main(){
-    // variavel para guarda a quantidade de movimento para cada uma das peças
-    int qtdquadradosTorre, qtdquadradosRainha, qtdquadradosBispo;
-    //direção pra onde a peça se move
-    char *direcaoTorre, *direcaoRainha, *direcaoBispo;
+//função recursiva
+    void rainhaMoviment(int quadros,char *direcao){
+        if(quadros >= 1){
+            printf("%s ", direcao);
+            rainhaMoviment(quadros-1, direcao);
+        }
+    }
+//função sem retorn de valor em variavel
+    void torreMoviment(int quadros, char *direcao){
+        for(int i = quadros; i > 0; i--){
+            printf("%s ", direcao);
+        }
+    }
 
-    //movimenta a Torre 
-   printf("Torre \n");
-    qtdquadradosTorre = 3;
-    direcaoTorre = "direita";
-    for(int t = 0;t<=qtdquadradosTorre; t++){
-    printf("%s ", direcaoTorre);
+
+int main(){
+    //movimento da Rainha
+    int qtdMovRainha = 3;
+    char *direcaoRainha = "esquerda";
+    //ela se movimentará 3 quadros para esquerda
+    printf("Movimento da Rainha\n");
+    rainhaMoviment(qtdMovRainha, direcaoRainha);
+    printf("\n\n");
+
+    //movimento da Torre
+    int qtdMovTorre = 4;
+    char *direcaoTorre = "direita";
+    //ele se movimentará 4 quadros para direita
+    printf("Movimento da Torre\n");
+    torreMoviment(qtdMovTorre, direcaoTorre);
+    printf("\n\n");
+
+    
+    printf("Movimento do Bispo\n");
+    //movimento da Bispo em diagonal(horizontal e vertical) com loop aninhado
+    int qtdMovBispoHor = 1,qtdMovBispoVert = 4;
+    char *direcaoBisHor = "direita",*direcaoBisVert = "baixo";
+    int bh = 0;
+    while(bh < qtdMovBispoVert){
+             printf("%s ", direcaoBisVert);
+        for(int bv=qtdMovBispoHor; bv > 0 ;bv --){
+             printf("%s ", direcaoBisHor);
+        }
+        bh++;
     }
-   printf("\n");
-   printf("\n");
-    //movimenta a Rainha 
-   printf("Rainha \n");
-    int r = 0;
-    qtdquadradosRainha = 3;
-    direcaoRainha = "esquerda";
-    while(r <= qtdquadradosRainha) {
-        printf("%s ", direcaoRainha);
-        r++;
+    printf("\n\n");
+
+    //movimento da Cavalo
+    int qtdMovCavHor = 1,qtdMovCavVert = 2;
+    char *direcaoCavHor = "direita",*direcaoCavVert = "cima";
+
+    //movimento do calavo em L com loop com multipla variaver
+    printf("Movimento do Cavalo\n");
+    for(int c=qtdMovCavHor, v=qtdMovCavVert; c > 0 || v > 0; c--, v--){
+             printf("%s ", direcaoCavHor);
+             if(c == 0){
+             printf("%s ", direcaoCavVert);
+             }
     }
-   printf("\n");
-   printf("\n");
-    //movimenta a Bispo 
-   printf("Bispo (diagonal 'esqueda,cima')\n");
-   int b = 0;
-   qtdquadradosBispo = 4;
-    direcaoBispo = "esquerda, cima";
-   do{
-        printf("%s ", direcaoBispo);
-        b++;
-   } while(b<=qtdquadradosBispo);
-   printf("\n");
-   printf("\n");
-    //movimenta a Cavalo 
-   printf("Cavalo (duas direçoes em L)\n");
-   char *direcaoCavalo1, *direcaoCavalo2;
-   int qtdquadradosCavlo1,qtdquadradosCavlo2;
-   qtdquadradosCavlo1 = 1;
-   qtdquadradosCavlo2 = 2;
-   direcaoCavalo1 = "esquerda";
-   direcaoCavalo2 = "baixo";
-   for(int c = qtdquadradosCavlo1; (c>0); c--){
-        for(int v=1; v<=qtdquadradosCavlo2; v++){
-        printf("\n%s ", direcaoCavalo2);
-         }
-        printf("%s ", direcaoCavalo1);
-   }
+
 return 0;
     }
-
